@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Player2.cs" />
     <Compile Include="Assets\PlayerParentMovement.cs" />
   </ItemGroup>
   <ItemGroup>
