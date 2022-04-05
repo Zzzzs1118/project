@@ -61,7 +61,7 @@ public class PlayerParentMovement : MonoBehaviour
             velocity_Y = 0;
             childTransform.position = transform.position;
 
-            if (childTransform.position == childTransform.position)
+            if (childTransform.position == transform.position)
             {
                 isJump = false;
 
