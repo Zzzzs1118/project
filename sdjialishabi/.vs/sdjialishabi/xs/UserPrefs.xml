@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{85A7353A-D578-6C27-5A2F-AE1F8820812B}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/PlayerParentMovement.cs">
+    <Files>
+      <File FileName="Assets/PlayerParentMovement.cs" Line="11" Column="33" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="sdjialishabi" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="PlayerParentMovement.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="26ec36eb-10fd-48d9-95ab-c991f0a22be0" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
