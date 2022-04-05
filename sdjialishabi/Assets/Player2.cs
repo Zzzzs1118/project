@@ -10,27 +10,49 @@ public class Player2 : MonoBehaviour
     public float jumpHeight = 5;
     public float aSpeed = -9.8f;
 
+    private Animator animator;
     private Vector2 direction;
     private bool isJump = false;
     private float velocity_Y;
+    GameObject pig;
+    Vector2 lookDirection = new Vector2(1, 0);
 
     public Transform childTransform;
 
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+
+        pig = GameObject.Find("Pig");
+        animator = pig.GetComponent<Animator>();
+
     }
     // Update is called once per frame
     void Update()
     {
+        
         direction.x = Input.GetAxisRaw("Horizontal2");
         direction.y = Input.GetAxisRaw("Vertical2") * 0.7f;
+
+        Vector2 move = new Vector2(direction.x, direction.y);
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter) && !isJump)
         {
             isJump = true;
             ReadyJump();
         }
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
+
+
+
         /*Vector2 position = transform.position;
         position.x = position.x + speed * horizontal * Time.deltaTime;
         position.y = position.y + speed * vertical * Time.deltaTime;
