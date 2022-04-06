@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Player2.cs" />
     <Compile Include="Assets\PlayerParentMovement.cs" />
+    <Compile Include="Assets\light.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
