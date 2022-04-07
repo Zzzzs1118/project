@@ -18,7 +18,13 @@ public class PlayerParentMovement : MonoBehaviour
     private float velocity_Y;
     GameObject chicken;
     Vector2 lookDirection = new Vector2(1, 0);
-
+    private bool jumpattack;
+    private GameObject[] play;
+    private GameObject[] light1;
+    private GameObject lig;
+    public int maxHealth = 5;
+    public int health { get { return currentHealth; } }
+    int currentHealth;
     public Transform childTransform;
 
     void Start()
@@ -27,8 +33,8 @@ public class PlayerParentMovement : MonoBehaviour
         pickIce = false;
         chicken =GameObject.Find("Chicken");
         animator =chicken.GetComponent<Animator>();
-        
-        
+        jumpattack = false;
+
     }
     // Update is called once per frame
     void Update()
@@ -43,6 +49,8 @@ public class PlayerParentMovement : MonoBehaviour
         {
             isJump = true;
             ReadyJump();
+            jumpattack = true;
+            animator.SetTrigger("Hit");
         }
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
@@ -94,7 +102,11 @@ public class PlayerParentMovement : MonoBehaviour
         {
             velocity_Y = 0;
             childTransform.position = transform.position;
-
+            if (jumpattack == true)
+            {
+                jumpattack = false;
+                attack();
+            }
             if (childTransform.position == transform.position)
             {
                 isJump = false;
@@ -129,4 +141,55 @@ public class PlayerParentMovement : MonoBehaviour
 
 
     }
+    public bool UmbrellaAttact(Transform attacker, Transform attacked, float angle, float radius)
+    {
+        light1 = GameObject.FindGameObjectsWithTag("Light");
+        for (int i = 0; i < light1.Length; i++)
+        {
+            if (light1[i].GetComponent<Light>().enabled == true)
+            {
+                lig = light1[i];
+            }
+        }
+
+        Vector2 deltaA = attacker.position - attacked.position;
+        Vector2 direct = attacked.position - lig.transform.position;
+
+        float tmpAngle = Mathf.Acos(Vector2.Dot(deltaA.normalized, direct.normalized)) * Mathf.Rad2Deg;
+
+        if (tmpAngle < angle * 0.5f && deltaA.magnitude < radius)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void attack()
+    {
+
+        play = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < play.Length; i++)
+        {
+            if (play[i] != this.gameObject)
+            {
+                if (UmbrellaAttact(this.gameObject.transform, play[i].transform, 45, 6))
+                {
+                    Debug.Log("Damage");
+                    //PlayerParentMovement controller = play[i].GetComponent<PlayerParentMovement>();
+                    //controller.ChangeHealth(-1);
+                }
+            }
+
+        }
+
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
+    }
+
 }
+
+

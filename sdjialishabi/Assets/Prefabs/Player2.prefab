@@ -49,6 +49,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpHeight: 2
   aSpeed: -9.8
+  pickIce: 0
   childTransform: {fileID: 1331095608707801125}
 --- !u!50 &1331095608506308842
 Rigidbody2D:
@@ -109,7 +110,7 @@ GameObject:
   - component: {fileID: 1331095608707801127}
   - component: {fileID: 1331095608707801126}
   m_Layer: 0
-  m_Name: 20220405_085204000_iOS
+  m_Name: Pig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

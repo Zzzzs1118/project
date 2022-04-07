@@ -41,6 +41,7 @@ public class Player2 : MonoBehaviour
         {
             isJump = true;
             ReadyJump();
+            animator.SetTrigger("Hit");
         }
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
